@@ -1,0 +1,112 @@
+[{
+    "gender": "male",
+    "name": {
+      "title": "mr",
+      "first": "romain",
+      "last": "hoogmoed"
+    },
+    "location": {
+      "street": "1861 jan pieterszoon coenstraat",
+      "city": "maasdriel",
+      "state": "zeeland",
+      "postcode": 69217
+    },
+    "email": "romain.hoogmoed@example.com",
+    "login": {
+      "username": "lazyduck408",
+      "password": "jokers",
+      "salt": "UGtRFz4N",
+      "md5": "6d83a8c084731ee73eb5f9398b923183",
+      "sha1": "cb21097d8c430f2716538e365447910d90476f6e",
+      "sha256": "5a9b09c86195b8d8b01ee219d7d9794e2abb6641a2351850c49c309f1fc204a0"
+    },
+    "dob": "1983-07-14 07:29:45",
+    "registered": "2010-09-24 02:10:42",
+    "phone": "(656)-976-4980",
+    "cell": "(065)-247-9303",
+    "id": {
+      "name": "BSN",
+      "value": "04242023"
+    },
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/men/83.jpg",
+      "medium": "https://randomuser.me/api/portraits/med/men/83.jpg",
+      "thumbnail": "https://randomuser.me/api/portraits/thumb/men/83.jpg"
+    },
+    "nat": "NL"
+  },
+  {
+    "gender": "female",
+    "name": {
+      "title": "mrs",
+      "first": "chloe",
+      "last": "dean"
+    },
+    "location": {
+      "street": "6368 tara street",
+      "city": "newcastle west",
+      "state": "laois",
+      "postcode": 26945
+    },
+    "email": "chloe.dean@example.com",
+    "login": {
+      "username": "beautifuldog869",
+      "password": "yuan",
+      "salt": "2pC09Pmv",
+      "md5": "877baf0d6fcb12a5a16fbcd8e15cbcb5",
+      "sha1": "8811e47f6b52af72a08a871ded6de9f0e8263883",
+      "sha256": "b3a7848484aa4b6d569461ec67b6b7440268ee2e764f6d13dcf039eb92d999fb"
+    },
+    "dob": "1975-11-26 00:37:25",
+    "registered": "2016-01-02 12:15:40",
+    "phone": "031-800-4973",
+    "cell": "081-374-3885",
+    "id": {
+      "name": "PPS",
+      "value": "7643376T"
+    },
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/women/89.jpg",
+      "medium": "https://randomuser.me/api/portraits/med/women/89.jpg",
+      "thumbnail": "https://randomuser.me/api/portraits/thumb/women/89.jpg"
+    },
+    "nat": "IE"
+  },
+  {
+    "gender": "female",
+    "name": {
+      "title": "miss",
+      "first": "fatima",
+      "last": "pascual"
+    },
+    "location": {
+      "street": "3798 avenida de américa",
+      "city": "torrente",
+      "state": "islas baleares",
+      "postcode": 60137
+    },
+    "email": "fatima.pascual@example.com",
+    "login": {
+      "username": "purplewolf682",
+      "password": "marty",
+      "salt": "5FvAvgB8",
+      "md5": "24a82f6fee6e8403ab2a8fdad9bcbd3a",
+      "sha1": "af112810a0438c96bdc4830b2578e9050d6d9935",
+      "sha256": "70025d9d373536ddb5681bfbe09b74e13cf4eca49491afcbf24402f2869e8b87"
+    },
+    "dob": "1956-09-01 14:21:35",
+    "registered": "2013-10-28 15:38:29",
+    "phone": "952-316-963",
+    "cell": "646-091-374",
+    "id": {
+      "name": "DNI",
+      "value": "74813332-H"
+    },
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/women/39.jpg",
+      "medium": "https://randomuser.me/api/portraits/med/women/39.jpg",
+      "thumbnail": "https://randomuser.me/api/portraits/thumb/women/39.jpg"
+    },
+    "nat": "ES"
+  }
+]

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link rel="stylesheet" href="/node_modules/mocha/mocha.css">
+  </head>
+  <body>
+    <div id="mocha"></div>
+    <script src="/node_modules/mocha/mocha.js"></script>
+    <script src="/node_modules/mocha/mocha.js"></script>
+    <script src="/node_modules/chai/chai.js"></script>
+    <script src="/node_modules/sinon/pkg/sinon.js"></script>
+    <script src="/node_modules/fetch-mock/es5/client-bundle.js"></script>
+    <script>mocha.setup('bdd')</script>
+    <script src="/test/browser-bundle.js" type="module"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        window.expect = chai.expect;
+        mocha.run();
+      });
+    </script>
+  </body>
+</html>
