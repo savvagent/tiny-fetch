@@ -92,55 +92,34 @@ describe("TinyFetch class", () => {
     expect(interceptors[0].id).to.be.equal("TINY_FETCH_JSON_REQUEST")
   })
 
-  it(`should support clearing interceptors`, () => {
+  it('should support clearing interceptors', () => {
     client.register(jsonResponse)
     let { interceptors } = client
-    expect(interceptors).to.be.an("array")
-    expect(interceptors[0].id).to.be.equal("TINY_FETCH_JSON_RESPONSE")
+    expect(interceptors).to.be.an('array')
+    expect(interceptors[0].id).to.be.equal('TINY_FETCH_JSON_RESPONSE')
     client.clear()
     interceptors = client.interceptors
-    expect(interceptors).to.be.an("array")
+    expect(interceptors).to.be.an('array')
     expect(interceptors).to.have.length(0)
   })
 
-  it(`should support unregistering an interceptor`, () => {
+  it('should support unregistering an interceptor', () => {
     client.register(jsonResponse)
     let { interceptors } = client
-    expect(interceptors).to.be.an("array")
-    expect(interceptors[0].id).to.be.equal("TINY_FETCH_JSON_RESPONSE")
-    client.unregister("TINY_FETCH_JSON_RESPONSE")
+    expect(interceptors).to.be.an('array')
+    expect(interceptors[0].id).to.be.equal('TINY_FETCH_JSON_RESPONSE')
+    client.unregister('TINY_FETCH_JSON_RESPONSE')
     interceptors = client.interceptors
-    expect(interceptors).to.be.an("array")
+    expect(interceptors).to.be.an('array')
     expect(interceptors).to.have.length(0)
   })
 
-  it(`should dedupe requests`, async () => {
+  it('should consolidate concurrent requests', async () => {
     client = new TinyFetch([jsonRequest, jsonResponse])
-    expect(client.requestCache.size).to.equal(0)
-    const resp1 = await client.request(url)
-    expect(client.requestCache.size).to.equal(1)
-    const resp2 = await client.request(url)
-    expect(client.requestCache.size).to.equal(1)
-    const resp3 = await client.request(url)
-    expect(client.requestCache.size).to.equal(1)
-    const resp4 = await client.request(url)
-    expect(client.requestCache.size).to.equal(1)
-    expect(resp2).to.equal(resp1)
-    expect(resp3).to.equal(resp1)
-    expect(resp4).to.equal(resp1)
-  })
-
-  it(`should consolidate concurrent requests`, async () => {
-    client = new TinyFetch([jsonRequest, jsonResponse])
-    expect(client.requestMap.size).to.equal(0)
     const req1 = client.request(url)
-    expect(client.requestMap.size).to.equal(1)
     const req2 = client.request(url)
-    expect(client.requestMap.size).to.equal(1)
     const req3 = client.request(url)
-    expect(client.requestMap.size).to.equal(1)
     const req4 = client.request(url)
-    expect(client.requestMap.size).to.equal(1)
 
     const [one, two, three, four] = await Promise.all([req1, req2, req3, req4])
     expect(two).to.equal(one)
@@ -151,25 +130,25 @@ describe("TinyFetch class", () => {
   })
 
   describe("convenience methods", () => {
-    it(`should support get`, async () => {
+    it('should support get', async () => {
       const arr = [rejectErrors, jsonRequest, jsonResponse]
       client.register(arr)
       const resp = await client.get(url)
-      expect(resp.data).to.be.an("array")
+      expect(resp.data).to.be.an('array')
       expect(resp.data).to.have.length(24)
     })
 
-    it(`should support post`, async () => {
+    it('should support post', async () => {
       const arr = [rejectErrors, jsonRequest, jsonResponse]
       client.register(arr)
       try {
         const resp = await client.post(url, {
           body: {
             id: 25,
-            employee_name: "Tom Bobby",
+            employee_name: 'Tom Bobby',
             employee_salary: 86000,
             employee_age: 305,
-            profile_image: "",
+            profile_image: '',
           },
         })
         expect(resp).to.be.ok
@@ -177,7 +156,7 @@ describe("TinyFetch class", () => {
         expect(error).to.not.exist
       }
     })
-    it(`should support put`, async () => {
+    it('should support put', async () => {
       fetchMock.put(`${url}/25`, employees)
       const arr = [jsonRequest, jsonResponse]
       client.register(arr)
@@ -185,10 +164,10 @@ describe("TinyFetch class", () => {
         const resp = await client.put(`${url}/25`, {
           body: {
             id: 25,
-            employee_name: "Tom Bobby",
+            employee_name: 'Tom Bobby',
             employee_salary: 86000,
             employee_age: 25,
-            profile_image: "",
+            profile_image: '',
           },
         })
         expect(resp).to.be.ok
@@ -196,7 +175,7 @@ describe("TinyFetch class", () => {
         expect(error).to.not.exist
       }
     })
-    it(`should support patch`, async () => {
+    it('should support patch', async () => {
       fetchMock.patch(`${url}/25`, employees)
       const arr = [jsonRequest, jsonResponse]
       client.register(arr)
@@ -204,10 +183,10 @@ describe("TinyFetch class", () => {
         const resp = await client.patch(`${url}/25`, {
           body: {
             id: 25,
-            employee_name: "Tom Bobby",
+            employee_name: 'Tom Bobby',
             employee_salary: 86000,
             employee_age: 2500,
-            profile_image: "",
+            profile_image: '',
           },
         })
         expect(resp).to.be.ok

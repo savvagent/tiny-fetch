@@ -1,4 +1,4 @@
-import { isJson } from "../utils"
+import { isJson } from '../utils'
 
 const rejectErrors = {
   response(response) {
@@ -6,7 +6,7 @@ const rejectErrors = {
     if (!response.ok) throw response
     return response
   },
-  id: "TINY_FETCH_REJECT_ERRORS",
+  id: 'TINY_FETCH_REJECT_ERRORS',
 }
 
 export default rejectErrors
