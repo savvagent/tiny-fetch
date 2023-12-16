@@ -1,35 +1,17 @@
 {
   "name": "@savvagent/tiny-fetch",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Lightweight isomorphic JavaScript HTTP client",
   "exports": {
-    "./TinyFetch": {
-      "import": "./dist/esm/TinyFetch.js",
-      "require": "./dist/cjs/TinyFetch.js"
+    ".": {
+      "import": "./src/index.js",
+      "require": "./dist/tiny-fetch.js",
+      "default": "./dist/tiny-fetch.js"
     },
-    "./interceptors/accept-lang": {
-      "import": "./dist/esm/interceptors/accept-lang.js",
-      "require": "./dist/cjs/interceptors/accept-lang.js"
-    },
-    "./interceptors/bust-cache": {
-      "import": "./dist/esm/interceptors/bust-cache.js",
-      "require": "./dist/cjs/interceptors/bust-cache.js"
-    },
-    "./interceptors/dedupe-gets": {
-      "import": "./dist/esm/interceptors/dedupe-gets.js",
-      "require": "./dist/cjs/interceptors/dedupe-gets.js"
-    },
-    "./interceptors/json-request": {
-      "import": "./dist/esm/interceptors/json-request.js",
-      "require": "./dist/cjs/interceptors/json-request.js"
-    },
-    "./interceptors/json-response": {
-      "import": "./dist/esm/interceptors/json-response.js",
-      "require": "./dist/cjs/interceptors/json-response.js"
-    },
-    "./interceptors/reject-errors": {
-      "import": "./dist/esm/interceptors/reject-errors.js",
-      "require": "./dist/cjs/interceptors/json-request.js"
+    "./interceptors": {
+      "import": "./interceptors/index.js",
+      "require": "./dist/interceptors/index.js",
+      "default": "./dist/interceptors/index.js"
     }
   },
   "scripts": {

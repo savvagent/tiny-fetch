@@ -1,14 +1,8 @@
 import { build } from "esbuild"
 
 const entryPoints = [
-  'src/interceptors//accept-lang.js',
-  'src/interceptors/bust-cache.js',
-  'src/interceptors/dedupe-gets.js',
-  'src/interceptors/json-request.js',
-  'src/interceptors/json-response.js',
-  'src/interceptors/lrucache.js',
-  'src/interceptors/reject-errors.js',
   'src/TinyFetch.js',
+  'src/interceptors/index.js'
 ]
 
 const browserConfig = {

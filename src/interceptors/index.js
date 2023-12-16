@@ -1,6 +1,6 @@
-export { bustCache } from './bust-cache'
-export { jsonRequest } from './json-request'
-export { jsonResponse } from './json-response'
-export { rejectErrors } from './reject-errors'
-export { lrucache } from './lrucache'
-export { dedupeGets } from './dedupe-gets'
+export { default as bustCache } from './bust-cache';
+export { default as jsonRequest } from './json-request';
+export { default as jsonResponse } from './json-response';
+export { default as rejectErrors } from './reject-errors';
+export { default as lrucache } from './lrucache';
+export { default as dedupeGets } from './dedupe-gets';
