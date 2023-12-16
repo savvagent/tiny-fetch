@@ -33,3 +33,7 @@ export const overloadMethod = (method, request) => {
   return new Request(url, { ...request, method })
 }
 
+export const browserLocale =
+  navigator.languages && navigator.languages.length ? navigator.languages[0] : navigator.language
+
+export const simpleLocale = browserLocale.replace(/-.*/, '')

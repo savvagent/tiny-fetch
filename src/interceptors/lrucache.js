@@ -1,34 +1,33 @@
-const cache = new Map()
+import { LRUCache } from 'lru-cache'
 
-const ttl = 1000 * 60 * 10 // 10 minutes
+const options = {
+  max: 500,
+  ttl: 1000 * 60 * 10, // 10 minutes
+  allowStale: false,
+  updateAgeOnGet: false,
+  updateAgeOnHas: false,
+}
 
-const jsonRequest = { id: 'TINY_FETCH_LRUCACHE' }
+const cache = new LRUCache(options)
 
-jsonRequest.mapKey = null
+const lruCache = { id: 'TINY_FETCH_LRUCACHE' }
 
-jsonRequest.request = (request) => {
-  if (request.cache) {
-    const { headers, url } = request
-    const headerValues = [...headers.values()]
-    const headerString = headerValues.join('')
-    jsonRequest.mapKey = JSON.stringify({
-      url,
-      method: request.method,
-      headerString,
-    })
-  }
+lruCache.mapKey = null
+
+lruCache.request = (request) => {
+  const { method } = request
+  if (method !== 'GET') return request
+  const key = JSON.stringify(request)
+  if (cache.has(key)) return cache.get(key)
+  lruCache.mapKey = key
   return request
 }
 
-jsonRequest.response = (response) => {
-  if (jsonRequest.mapKey) {
-    if (cache.has(jsonRequest.mapKey)) return cache.get(jsonRequest.mapKey)
-    cache.set(jsonRequest.mapKey, response.clone())
-    setTimeout(() => {
-      cache.delete(jsonRequest.mapKey)
-    }, ttl)
+lruCache.response = (response) => {
+  if (lruCache.mapKey) {
+    cache.set(lruCache.mapKey, response.clone())
   }
   return response
 }
 
-export default jsonRequest
+export default lruCache

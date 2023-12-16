@@ -1,15 +1,23 @@
 {
   "name": "@savvagent/tiny-fetch",
-  "version": "3.0.8-rc.13",
+  "version": "3.0.0",
   "description": "Lightweight isomorphic JavaScript HTTP client",
   "exports": {
     "./TinyFetch": {
       "import": "./dist/esm/TinyFetch.js",
       "require": "./dist/cjs/TinyFetch.js"
     },
+    "./interceptors/accept-lang": {
+      "import": "./dist/esm/interceptors/accept-lang.js",
+      "require": "./dist/cjs/interceptors/accept-lang.js"
+    },
     "./interceptors/bust-cache": {
       "import": "./dist/esm/interceptors/bust-cache.js",
       "require": "./dist/cjs/interceptors/bust-cache.js"
+    },
+    "./interceptors/dedupe-gets": {
+      "import": "./dist/esm/interceptors/dedupe-gets.js",
+      "require": "./dist/cjs/interceptors/dedupe-gets.js"
     },
     "./interceptors/json-request": {
       "import": "./dist/esm/interceptors/json-request.js",
@@ -29,7 +37,7 @@
     "build:w": "nodemon -w esbuild.dev.config.js -w src -w interceptors esbuild.dev.config.js",
     "dev:server": "web-dev-server --node-resolve --port 8080 --open test/ --watch",
     "dev": "run-p build:w dev:server",
-    "mocha": "mocha:w",
+    "mocha": "run-s mocha:w",
     "mocha:w": "mocha -u bdd -R spec -t 5000 --watch test/server-bundle.js",
     "postinstall": "run-s build",
     "start": "run-p build:w mocha:w",
@@ -53,9 +61,11 @@
     "node-fetch": "^3.3.1",
     "nodemon": "^2.0.22",
     "npm-run-all": "^4.1.5",
+    "react": "^18.2.0",
     "sinon": "^14.0.2"
   },
   "dependencies": {
+    "lru-cache": "^10.0.2",
     "tiny-uri": "^9.1.5"
   },
   "directories": {

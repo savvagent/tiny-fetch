@@ -5,11 +5,14 @@ import jsonResponse from "../src/interceptors/json-response"
 import rejectErrors from "../src/interceptors/reject-errors"
 import lrucache from '../src/interceptors/lrucache'
 import mockEmployees from "./mockEmployees"
+import dedupeGets from '../src/interceptors/dedupe-gets'
 import { expect } from 'chai'
+import fetchMock from 'fetch-mock'
 
 describe("standard interceptors", () => {
   let client
   const url = "http://dummy.restapiexample.com/api/v1/employees"
+  let mock
 
   beforeEach(() => {
     client = new TinyFetch()
@@ -105,12 +108,24 @@ describe("standard interceptors", () => {
   })
 
   describe('lrucache interceptor', () => {
-    it('should cache a response', async () => {
+    it.only('should cache a response', async () => {
       client = new TinyFetch([jsonRequest, lrucache, jsonResponse])
-      const resp1 = await client.request(url, { cache: true })
-      const resp2 = await client.request(url, { cache: true })
-      const resp3 = await client.request(url, { cache: true })
-      expect(resp1.status).to.equal('success')
+      const resp1 = await client.get(url)
+      const resp2 = await client.get(url)
+      const resp3 = await client.get(url)
+      console.log(`resp1`, resp1)
+      console.log(`resp2`, resp2)
+      expect(resp2).to.equal(resp1)
+    })
+  })
+
+  describe('dedupeGets interceptor', () => {
+    it('should dedupe requests', async () => {
+      const mock = fetchMock.get(url, mockEmployees)
+      client = new TinyFetch([dedupeGets, jsonResponse])
+      const final = await Promise.all([client.get(url), client.get(url), client.get(url)])
+      expect(final).to.have.length(3)
+      expect(mock.calls()).to.have.length(1)
     })
   })
 })

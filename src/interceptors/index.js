@@ -1,7 +1,6 @@
-import bustCache from './bust-cache';
-import jsonRequest from './json-request';
-import jsonResponse from './json-response';
-import rejectErrors from './reject-errors';
-import lrucache from './lrucache'
-
-export { bustCache, jsonRequest, jsonResponse, rejectErrors, lrucache }
+export { bustCache } from './bust-cache'
+export { jsonRequest } from './json-request'
+export { jsonResponse } from './json-response'
+export { rejectErrors } from './reject-errors'
+export { lrucache } from './lrucache'
+export { dedupeGets } from './dedupe-gets'
