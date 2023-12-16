@@ -1,3 +1,4 @@
+export { default as acceptLang } from './accept-lang';
 export { default as bustCache } from './bust-cache';
 export { default as jsonRequest } from './json-request';
 export { default as jsonResponse } from './json-response';
